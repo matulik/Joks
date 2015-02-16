@@ -9,8 +9,8 @@ public class Card {
     private char suit;
 
     Card() {
-        this.symbol = 0;
-        this.suit = 0;
+        this.symbol = '0';
+        this.suit = '0';
     }
 
     public void setSymbol(char symbol) {
@@ -38,6 +38,6 @@ public class Card {
     }
 
     public String toString() {
-        return this.suit + "" + this.symbol;
+        return this.symbol + "" + this.suit;
     }
 }

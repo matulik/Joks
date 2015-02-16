@@ -1,14 +1,32 @@
+import java.util.Comparator;
+
 /**
  * Created by matulik on 16.02.15.
  */
-public class Player {
+public class Player implements Comparable<Player> {
+    private static int nextId = 1;
+    private int id;
+    private String name;
     private Card[] card = new Card[2];
     private float percent;
     private boolean is_virtual;
 
+
     Player() {
+        this.name = "Noname";
         this.percent = 0;
         this.is_virtual = false;
+        this.card[0] = new Card();
+        this.card[1] = new Card();
+    }
+
+    public void setId() {
+        this.id = nextId;
+        nextId++;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public void setPercent(float percent) {
@@ -40,19 +58,24 @@ public class Player {
         return this.card[1];
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     public String toString() {
-        return this.card[0].toString() + "|" + this.card[1].toString();
+        return this.getName() + " - " + this.card[0].toString() + "|" + this.card[1].toString();
+    }
+
+    public int compareTo(Player p) {
+        return Integer.compare(this.id, p.id);
     }
 
     public static void main(String[] args) {
-        /*Card a1 = new Card();
-        Card a2 = new Card();
-        a1.setSuit('2');
-        a1.setSymbol('K');
-        a2.setSuit('1');
-        a2.setSymbol('K');
-        Player p = new Player();
-        p.setCard(a1, a2);
+       /* Player p = new Player();
         System.out.println(p.toString());*/
     }
 
